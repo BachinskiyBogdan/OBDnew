@@ -16,6 +16,8 @@
 
 
 from PyQt4 import QtCore, QtGui
+import sys
+from PyQt4.QtGui import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -64,3 +66,11 @@ class Ui_MainWindow(object):
         self.Yes_btn.setText(QtGui.QApplication.translate("MainWindow", "Yes", None, QtGui.QApplication.UnicodeUTF8))
         self.No_btn.setText(QtGui.QApplication.translate("MainWindow", "No", None, QtGui.QApplication.UnicodeUTF8))
 
+    def run(self):
+        app = QApplication(sys.argv)
+        w = QMainWindow()
+        uw = delete.Ui_MainWindow()
+        self.window = app
+        uw.setupUi(w)
+        w.show()
+        sys.exit(app.exec_())

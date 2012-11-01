@@ -15,6 +15,8 @@
 '''
 
 from PyQt4 import QtCore, QtGui
+import sys
+from PyQt4.QtGui import *
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -86,3 +88,10 @@ class Ui_MainWindow(object):
 "или Cancel, чтобы выйти из программы\n"
 "", None, QtGui.QApplication.UnicodeUTF8))
 
+    def run(self):
+        app = QApplication(sys.argv)
+        w = QMainWindow()
+        uw = error.Ui_MainWindow()
+        self.window = app
+        uw.setupUi(w)
+        w.show()

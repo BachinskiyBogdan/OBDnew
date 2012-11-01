@@ -1,4 +1,4 @@
-class OriginRepository(object):
+class ProductRepository(object):
     def __init__(self):
         pass
 

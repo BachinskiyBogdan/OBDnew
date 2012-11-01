@@ -31,6 +31,10 @@
 
 
 from PyQt4 import QtCore, QtGui
+import sys
+from PyQt4.QtGui import *
+
+from ProductProject import DeleteView, InsertView
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -38,6 +42,8 @@ except AttributeError:
     _fromUtf8 = lambda s: s
 
 class Ui_MainWindow(object):
+
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
@@ -988,6 +994,7 @@ class Ui_MainWindow(object):
         self.AirportID_line_edit_10.setAlignment(QtCore.Qt.AlignCenter)
         self.AirportID_line_edit_10.setReadOnly(True)
         self.AirportID_line_edit_10.setObjectName(_fromUtf8("AirportID_line_edit_10"))
+        #self._init_buttons()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1175, 21))
@@ -1034,3 +1041,41 @@ class Ui_MainWindow(object):
         self.label_6.setText(QtGui.QApplication.translate("MainWindow", "OriginState", None, QtGui.QApplication.UnicodeUTF8))
         self.label_7.setText(QtGui.QApplication.translate("MainWindow", "OriginStateName", None, QtGui.QApplication.UnicodeUTF8))
 
+    def _init_buttons(self):
+        self._set_delete_action()
+        self._set_update_action()
+
+    def _set_update_action(self):
+        self.insert_action = InsertView.Ui_MainWindow().run()
+        QtCore.QObject.connect(self.Update_btn_1, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_4, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_5, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_6, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_7, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_8, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_9, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+        QtCore.QObject.connect(self.Update_btn_10, QtCore.SIGNAL(_fromUtf8("clicked()")), self.insert_action)
+
+
+    def _set_delete_action(self):
+        self.delete_action = DeleteView.Ui_MainWindow().run()
+        QtCore.QObject.connect(self.Delete_btn_1, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_3, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_4, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_5, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_6, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_7, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_8, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_9, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+        QtCore.QObject.connect(self.Delete_btn_10, QtCore.SIGNAL(_fromUtf8("clicked()")), self.delete_action)
+
+    def run(self):
+        app = QApplication(sys.argv)
+        w = QMainWindow()
+        uw = display.Ui_MainWindow()
+        self.window = app
+        uw.setupUi(w)
+        w.show()
