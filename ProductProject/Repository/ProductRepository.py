@@ -5,6 +5,9 @@ class ProductRepository(object):
     def read(self, start_index, number_of_entities):
         pass
 
+    def find(self, field_name, field_value):
+        pass
+
     def add(self, new_entity):
         pass
 

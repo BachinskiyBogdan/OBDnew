@@ -14,8 +14,14 @@ class DBManager(object):
     def set_string(self, index, string):
         pass
 
+    def get_string(self, field_name, field_value):
+        pass
+
+    def set_string(self, field_name, field_value, string):
+        pass
+
     def create_index_file_main(self):
         pass
 
-    def create_index_file_by_field(self, field):
+    def create_index_file_by_field(self, field_name):
         pass
