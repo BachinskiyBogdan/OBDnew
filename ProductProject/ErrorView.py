@@ -89,8 +89,9 @@ class Ui_MainWindow(object):
 "", None, QtGui.QApplication.UnicodeUTF8))
 
     def run(self):
+        app = QApplication(sys.argv)
         w = QMainWindow()
-        uw = Ui_MainWindow()
+        uw = error.Ui_MainWindow()
+        self.window = app
         uw.setupUi(w)
         w.show()
-        sys.exit(app.exec_())

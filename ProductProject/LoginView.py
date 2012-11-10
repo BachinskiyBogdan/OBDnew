@@ -16,22 +16,14 @@
 import sys
 from PyQt4.QtGui import *
 from PyQt4 import QtCore, QtGui
-
-import MainView
-import ErrorView
+from ProductProject import MainView, ErrorView
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
 
-
-
 class Ui_MainWindow(object):
-    def __init__(self, main_view, error_view):
-        self.main_view = main_view
-        self.error_view = error_view
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(613, 340)
@@ -83,9 +75,12 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
 
+        window = None
+        
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+        
+        QtCore.QObject.connect(MainWindow, QtCore.SIGNAL("destroyed()"),QtGui.qApp, QtCore.SLOT('quit()'))
         QtCore.QObject.connect(self.login_btn, QtCore.SIGNAL(_fromUtf8("clicked()")), self.Login)
 
     def retranslateUi(self, MainWindow):
@@ -94,24 +89,24 @@ class Ui_MainWindow(object):
         self.login_btn.setText(QtGui.QApplication.translate("MainWindow", "Login", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "Логин", None, QtGui.QApplication.UnicodeUTF8))
 
+    #obj = 
+    
     def Login(self):
-        user_name = "q"
-        pass_word = "q"
+        user_name = "B"
+        pass_word = "1111"
         if ((user_name == self.username.text()) & (pass_word == self.password.text())):
-            self.main_view.run()
+            MainView.Ui_MainWindow().run()
+            self.window.destroy()
         else:
-            self.error_view.run()
+            ErrorView.Ui_MainWindow().run()
 
-    def set_main_view(self, main_view):
-        self.main_view = main_view
-
-    def set_error_view(self, error_view):
-        self.error_view = error_view
-
+        
+        # проверка на подленность имени/пароля. нет - ErrorView.py, да - MainView.py
     def run(self):
         app = QApplication(sys.argv)
         w = QMainWindow()
-        uw = self
+        uw = login.Ui_MainWindow()
+        self.window = app
         uw.setupUi(w)
         w.show()
         sys.exit(app.exec_())
