@@ -169,6 +169,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        QtCore.QObject.connect(self.Cancel_btn, QtCore.SIGNAL(_fromUtf8("clicked()")), self.cancel_action)
+
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "Insert", None, QtGui.QApplication.UnicodeUTF8))
         self.label.setText(QtGui.QApplication.translate("MainWindow", "Origin", None, QtGui.QApplication.UnicodeUTF8))
@@ -180,11 +182,22 @@ class Ui_MainWindow(object):
         self.OK_btn.setText(QtGui.QApplication.translate("MainWindow", "OK", None, QtGui.QApplication.UnicodeUTF8))
         self.Cancel_btn.setText(QtGui.QApplication.translate("MainWindow", "Cancel", None, QtGui.QApplication.UnicodeUTF8))
 
+    def cancel_action(self):
+        pass
+
+    def run_update(self, number):
+        self.number = number
+        self.is_insert = 0
+        self.run()
+
+    def run_insert(self):
+        self.is_insert = 1
+        self.run()
+
     def run(self):
-        app = QApplication(sys.argv)
-        w = QMainWindow()
-        uw = insert.Ui_MainWindow()
-        self.window = app
-        uw.setupUi(w)
-        w.show()
+        self.window = QMainWindow()
+        uw = Ui_MainWindow()
+        uw.setupUi(self.window)
+        self.window.show()
+
         sys.exit(app.exec_())

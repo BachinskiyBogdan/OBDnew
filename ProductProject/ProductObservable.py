@@ -1,9 +1,9 @@
-class OriginObservable(object):
+class ProductObservable(object):
     def __init__(self, value=None):
         self.value = value
         self.callbacks = []
 
-    def addCallback(self, func):
+    def add_callback(self, func):
         self.callbacks.append(func)
 
     def set(self, value):
